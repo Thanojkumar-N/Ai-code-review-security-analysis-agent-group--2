@@ -1,0 +1,6 @@
+SOLID Principles Guidelines Summary:
+1. Single Responsibility Principle (SRP): A class should have only one reason to change. Large classes containing > 10 methods violate SRP.
+2. Open/Closed Principle (OCP): Software artifacts must be open for expansion, but closed for modifications.
+3. Liskov Substitution Principle (LSP): Subtypes must be completely substitutable for their base types without altering correctness.
+4. Interface Segregation Principle (ISP): Split bloated interfaces into smaller, specific role-based contracts.
+5. Dependency Inversion Principle (DIP): Depend upon abstractions, not concrete implementations. Enforce dependency injection.

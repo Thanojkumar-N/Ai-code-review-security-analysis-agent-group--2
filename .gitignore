@@ -1,0 +1,59 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+.venv/
+venv/
+ENV/
+env/
+.pytest_cache/
+.coverage
+htmlcov/
+
+# Node / Frontend
+node_modules/
+dist/
+dist-ssr/
+*.local
+.eslintcache
+.stylelintcache
+.vite-inspect
+.yarn/
+.pnpm-store/
+
+# Database & SQLite
+*.db
+*.sqlite3
+postgres-data/
+
+# Environment Variables & Keys
+.env
+.env.production
+.env.development
+.env.local
+*.pem
+*.key
+
+# IDEs
+.vscode/
+.idea/
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.swp
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Project Uploads & Reports
+uploads/*
+!uploads/.gitkeep
+reports/*
+!reports/.gitkeep
+vector_db/*
+!vector_db/.gitkeep
+
+# Git Portable
+git-portable/

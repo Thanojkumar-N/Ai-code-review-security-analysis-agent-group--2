@@ -1,0 +1,6 @@
+Python Secure Coding Guidelines:
+1. Command execution: Block shell=True inside subprocess invocations. Raw os.system commands executing parameter strings invite shell escapes.
+2. Insecure deserialization: Pickle.loads is dangerous. Use json.loads for serialization requirements.
+3. SQL queries: Enforce bindparams execution inside SQLAlchemy text() statements: `session.execute(text("SELECT ... WHERE val = :val"), {"val": user_input})`.
+4. SSRF targets whitelisting: Assert target domains exist in whitelisted lookup tables before triggering requests.get() connections.
+5. Dynamic codes execution: Avoid eval() or exec() operations on input arguments.

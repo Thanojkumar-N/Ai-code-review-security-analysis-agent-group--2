@@ -1,0 +1,6 @@
+Clean Code Standards Summary:
+1. Functions should be small and serve a single purpose. Long methods exceeding 50 lines should be refactored.
+2. Names should be descriptive: avoid variable identifiers under 3 characters (except standard loop indexes like i, j, k).
+3. Do not use magic numbers directly in operations; assign literals to declared variables or constants.
+4. Clean up unused variables and remove dead code following return statements.
+5. Nesting depths inside loops/conditionals must not exceed 3 levels deep.

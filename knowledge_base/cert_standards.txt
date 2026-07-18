@@ -1,0 +1,5 @@
+CERT Secure Coding Standards Summary:
+1. Java Command Injection: Never pass unvalidated string arguments directly to Runtime.getRuntime().exec(). Enforce array blocks using ProcessBuilder to separate commands from parameter options.
+2. Unsafe Deserialization: Avoid standard ObjectInputStream readObject() executions on dynamic input streams. Flagged under CERT-IDS00-J.
+3. Cryptographic Hashing: Upgrades weak md5 and sha-1 algorithm calls to secure MessageDigest.getInstance("SHA-256") iterations to prevent hash collision.
+4. Input Sanity: Validate file descriptors boundaries when opening FileInputStream channels to prevent directory path traversals.

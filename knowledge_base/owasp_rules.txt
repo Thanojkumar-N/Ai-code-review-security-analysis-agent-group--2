@@ -1,0 +1,6 @@
+OWASP Secure Coding Guidelines Summary:
+1. SQL Injection: Always parameterize queries. Never concatenate user input directly into SQL strings. SQLi is flagged under A03:2021-Injection.
+2. Cross-Site Scripting (XSS): Escape user inputs before rendering them inside HTML pages. Dynamic outputs must be HTML escaped. Flagged under A03:2021-Injection.
+3. CSRF (Cross-Site Request Forgery): Enable anti-forgery tokens globally in web endpoints. WTF_CSRF_ENABLED must be True. Flagged under A05:2021-Security Misconfiguration.
+4. Broken Authentication: Reject JWT signatures using the 'none' algorithm. Always enforce bcrypt or Argon2 for stored password keys. Flagged under A07:2021-Identification and Authentication Failures.
+5. Broken Access Control: Clean filepath boundaries using basename to block path traversal (../) exploits. Flagged under A01:2021-Broken Access Control.

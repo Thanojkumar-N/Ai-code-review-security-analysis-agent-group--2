@@ -1,0 +1,6 @@
+Java Secure Coding Guidelines:
+1. SQL Queries: PreparedStatements separate instruction logic from input arguments: `PreparedStatement stmt = conn.prepareStatement("SELECT * FROM users WHERE id = ?")`.
+2. Output Escapes: Filter servlet printer logs using StringEscapeUtils.escapeHtml4 to block Cross-Site Scripting (XSS).
+3. CSRF Controls: Spring config setups must keep csrf controls enabled: `.csrf()` options are enabled by default. Do not call `.csrf().disable()`.
+4. Password Hashing: BCryptPasswordEncoder or Argon2 should replace NoOpPasswordEncoder.
+5. Path traversals: Always use new File(baseDir, new File(userInput).getName()) to lock down directory boundaries.
