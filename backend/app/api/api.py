@@ -4,6 +4,7 @@ from backend.app.api.endpoints.submissions import router as submissions_router
 from backend.app.api.endpoints.reports import router as reports_router
 from backend.app.api.endpoints.system import router as system_router
 from backend.app.api.endpoints.projects import router as projects_router
+from backend.app.api.endpoints.analysis import router as analysis_router
 
 api_router = APIRouter()
 
@@ -13,3 +14,4 @@ api_router.include_router(submissions_router, prefix="/submissions", tags=["Code
 api_router.include_router(projects_router, prefix="/projects", tags=["Project Containers"])
 api_router.include_router(reports_router, prefix="/reports", tags=["Analysis Reports"])
 api_router.include_router(system_router, prefix="/system", tags=["System Operational Info"])
+api_router.include_router(analysis_router, prefix="/analysis", tags=["Code Quality Analysis"])
