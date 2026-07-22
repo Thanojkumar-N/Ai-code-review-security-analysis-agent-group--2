@@ -159,7 +159,7 @@ class AnalysisService:
 
         # 6. Populate ReviewFinding records for code quality smells
         for qf in quality_findings:
-            line_num = qf.get("line", 1)
+            line_num = qf.get("line_number", qf.get("line", 1))
             finding = ReviewFinding(
                 report_id=report.id,
                 file_path=filename,
@@ -167,9 +167,9 @@ class AnalysisService:
                 severity=qf.get("severity", "Medium"),
                 category=qf.get("category", "Code Quality"),
                 title=qf.get("title", "Code Quality Smell"),
-                description=qf.get("description", "Potential code smell found by static quality agent."),
-                recommendation="Refactor the code snippet to align with standard clean coding practices.",
-                code_snippet=qf.get("snippet", "")
+                description=qf.get("explanation", qf.get("description", "Potential code smell found by static quality agent.")),
+                recommendation=qf.get("recommendation", "Refactor the code snippet to align with standard clean coding practices."),
+                code_snippet=qf.get("code_snippet", qf.get("snippet", ""))
             )
             db.add(finding)
         
