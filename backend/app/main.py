@@ -8,8 +8,10 @@ from backend.app.database.session import Base
 from backend.app.api.api import api_router
 
 # Import endpoint logic to map directly to root routes
+from typing import List
 from backend.app.api.endpoints.submissions import paste_code, upload_code
 from backend.app.api.endpoints.system import health_check, system_version
+from backend.app.api.endpoints.analysis import CodeAnalysisRequest, CodeAnalysisFindingResponse, analyze_code_endpoint, SecurityAnalysisRequest, SecurityAnalysisFindingResponse, analyze_security_endpoint, ParallelAnalysisRequest, ParallelAnalysisResponse, run_parallel_analysis_endpoint
 from backend.app.schemas.submission import SubmissionCreate, SubmissionResponse
 from backend.app.middleware.auth import get_current_user
 from backend.app.models.user import User
@@ -70,6 +72,30 @@ async def root_upload_code(
 ):
     """Direct root endpoint mapping to upload code archive files for analysis."""
     return await upload_code(project_id=project_id, file=file, db=db, current_user=current_user)
+
+@app.post("/analysis/code", response_model=List[CodeAnalysisFindingResponse], tags=["Root Direct Endpoints"])
+def root_analyze_code(
+    request: CodeAnalysisRequest,
+    current_user: User = Depends(get_current_user)
+):
+    """Direct root endpoint mapping to analyze code quality and smells."""
+    return analyze_code_endpoint(request=request, current_user=current_user)
+
+@app.post("/analysis/security", response_model=List[SecurityAnalysisFindingResponse], tags=["Root Direct Endpoints"])
+def root_analyze_security(
+    request: SecurityAnalysisRequest,
+    current_user: User = Depends(get_current_user)
+):
+    """Direct root endpoint mapping to analyze code security vulnerabilities."""
+    return analyze_security_endpoint(request=request, current_user=current_user)
+
+@app.post("/analysis/run", response_model=ParallelAnalysisResponse, tags=["Root Direct Endpoints"])
+def root_analyze_parallel(
+    request: ParallelAnalysisRequest,
+    current_user: User = Depends(get_current_user)
+):
+    """Direct root endpoint mapping to run parallel code quality and security analyses."""
+    return run_parallel_analysis_endpoint(request=request, current_user=current_user)
 
 @app.get("/")
 def read_root():
